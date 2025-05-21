@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신혼여행 준비물 체크리스트</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .checklist {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+  <h1>신혼여행 준비물 체크리스트</h1>
+  <div class="checklist" id="checklist">
+    <!-- 아이템들이 자바스크립트로 채워짐 -->
+  </div>
+
+  <script>
+    const items = [
+      "여권 및 비자",
+      "항공권/예약확인서",
+      "호텔 예약내역",
+      "여행자 보험",
+      "국제운전면허증",
+      "유럽 플러그 어댑터",
+      "현지 화폐/카드",
+      "세면도구",
+      "스킨케어/화장품",
+      "선크림",
+      "모자/선글라스",
+      "편한 신발",
+      "계절별 옷 (스위스/포르투갈용)",
+      "보조배터리",
+      "충전기/케이블",
+      "카메라/기기",
+      "비상약 (감기약, 지사제 등)",
+      "칫솔/치약",
+      "속옷/양말",
+      "우산/우비",
+      "비닐팩/지퍼백",
+      "여행 일정표/프린트물",
+      "기내용 슬리퍼/귀마개"
+    ];
+
+    const checklistDiv = document.getElementById('checklist');
+
+    items.forEach((item, index) => {
+      const isChecked = localStorage.getItem(`check_${index}`) === 'true';
+      const label = document.createElement('label');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = isChecked;
+      checkbox.addEventListener('change', () => {
+        localStorage.setItem(`check_${index}`, checkbox.checked);
+      });
+      label.appendChild(checkbox);
+      label.append(item);
+      checklistDiv.appendChild(label);
+    });
+  </script>
+</body>
+</html>
